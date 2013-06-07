@@ -1,19 +1,20 @@
 " Perl 
-" =================================================================================
 au FileType perl setl ts=4 sw=4 expandtab
 
 map ,pt <Esc>:%! perltidy -se<CR>
 map ,ptv <Esc>:'<,'>! perltidy -se<CR>
 " autocmd BufNewFile *.pl 0r $HOME/.vim/template/template.pl
 
+autocmd BufNewFile,BufRead *.psgi   set filetype=perl
+autocmd BufNewFile,BufRead *.t      set filetype=perl
+
 
 " Ruby
-" =================================================================================
 au FileType ruby setl ts=2 sw=2 expandtab
 " autocmd BufNewFile *.rb 0r $HOME/.vim/template/template.rb
 
+
 " C-Lang
-" =================================================================================
 au FileType c setl ts=4 sw=4 expandtab
 
 " nnoremap <sid>(command-line-enter) q:
@@ -24,7 +25,6 @@ au FileType c setl ts=4 sw=4 expandtab
 " xmap :  <sid>(command-line-enter)
 
 " LLVM
-" =================================================================================
 augroup filetype
   au! BufRead,BufNewFile *.ll     set filetype=llvm
 augroup END
@@ -35,9 +35,5 @@ autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
 autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
 autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
 autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
-
-" ==== Perl
-autocmd BufNewFile,BufRead *.psgi   set filetype=perl
-autocmd BufNewFile,BufRead *.t      set filetype=perl
 
 

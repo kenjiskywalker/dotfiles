@@ -1,26 +1,39 @@
-set expandtab           " インデントをTabではなくスペースに
-set shiftwidth=4
-set tabstop=4           " タブをスペース何個に変換するか
-set softtabstop=4       " Tabを押したときに入るスペースの量
-set showmatch           " カッコの対応を確認
-set laststatus=1        " ステータス行の表示設定
-set ignorecase          " 検索・置換時の大文字小文字を区別しない
-set wildmode=list:full  " 補完機能を有効にする
-set wildmenu            " 補完候補を表示する
-set listchars=tab:>-    " Tabを明示的に表示
-set list                " Tabや改行を可視化
-set ruler               " ルーラーを表示
+set expandtab           " change tab into space
+set shiftwidth=4        " tab width
+set tabstop=4           " tab width
+set softtabstop=4       " tab width
+set showmatch           " match kakko
+set laststatus=2        " status line
+set cmdheight=2
+set showcmd
+set title
+set ignorecase          " not distinct UPCASE downcase
+set wildmode=list:full  " complete
+set wildmenu            " complete
+set listchars=tab:>-    " view tab
+set list                " view \n
+set ruler               " view ruler
 set statusline=
-set statusline+=%<%f\ %m%r%h%w%{'['.(&fenc!=''?&fenc:&enc).']['.&ff.']'}%=%l,%c%V%8P " ステータス行に文字コードと改行コードを表示
-set statusline+=\ %{strftime('%c')}  " 時間
-set incsearch           "検索打ち込み中にも検索
-set hlsearch            "検索打ち込み中にも検索
-set showcmd             "実行中のコマンド表示
+set statusline+=%<%f\ %m%r%h%w%{'['.(&fenc!=''?&fenc:&enc).']['.&ff.']'}%=%l,%c%V%8P
+set statusline+=\ %{strftime('%c')}
+set incsearch
+set hlsearch
 set nowrap
-set guioptions-=r       "右スクロールバーの非表示
-set tw=0                "自動改行を無効
+set guioptions-=r       " disable right scrollbar
+set guioptions-=l       " disable left scrollbar
+set guioptions-=T       " disable toolber
 
-syntax on               "ソースコードをハイライト
+set guioptions-=L
+set guioptions-=m       " disable menu
+set guioptions+=c
+
+set list
+set listchars=tab:>-,trail:-,extends:>,precedes:<
+set display=uhex
+
+set tw=0                " disable auto indent
+
+syntax on               " view source code highlight
 
 if &t_Co > 2 || has("gui_running")
   syntax on
@@ -28,38 +41,15 @@ if &t_Co > 2 || has("gui_running")
 endif
 
 set shortmess+=I
-
-" ツールバーを削除
-set guioptions-=T
-
-set guioptions-=l " 左スクロールバー非表示
-
-set guioptions-=L
-"メニューを削除
-set guioptions-=m
-set guioptions+=c
-
 set lines=70 columns=210
-
 
 colorscheme molokai
 " set background=dark
 " colorscheme solarized
 " colorscheme zenburn
 
-" タブや空白を可視化
-" =================================================
-set list
-set listchars=tab:>-,trail:-,extends:>,precedes:<
-set display=uhex
-
-" ハイライトの設定
-" =================================================
+" set highlight
 execute "highlight ucurl_my gui=underline guisp=Red"
 let g:hier_highlight_group_qf = "ucurl_my"
 
 
-set laststatus=2
-set cmdheight=2
-set showcmd
-set title
