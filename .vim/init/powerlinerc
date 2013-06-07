@@ -1,0 +1,6 @@
+" source /usr/local/lib/python3.3/site-packages/powerline/bindings/vim/plugin/source_plugin.vim
+" python from powerline.bindings.vim import source_plugin; source_plugin()
+source /usr/local/lib/python2.7/site-packages/powerline/bindings/vim/plugin/powerline.vim
+
+set guifont=Ricty\ Regular\ for\ Powerline:h13
+let g:Powerline_symbols='fancy'

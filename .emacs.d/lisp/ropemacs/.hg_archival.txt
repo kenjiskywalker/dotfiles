@@ -1,0 +1,4 @@
+repo: 8c6d531cc2a1cf0d8d46aea79676c624728e65c5
+node: 8b277a188d00a11eb561687587ac9bd6f331155b
+branch: trunk
+tag: 0.6

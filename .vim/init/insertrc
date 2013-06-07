@@ -1,0 +1,59 @@
+" Emacs
+imap <C-e> <END>
+imap <C-g> <ESC>
+" noremap ; :
+" noremap : ;
+
+
+" insertモードを抜けるとIMEオフ
+set noimdisable
+set iminsert=0 imsearch=0
+set noimcmdline
+inoremap :set iminsert=0
+
+inoremap <silent> <Esc> <Esc>
+inoremap <silent> <C-[> <Esc>
+
+" どのモードでもマウスを使えるようにする
+""" set mouse=a
+" マウスの移動でフォーカスを自動的に切替えない (mousefocus:切替る)
+set nomousefocus
+" 入力時にマウスポインタを隠す (nomousehide:隠さない)
+set mousehide
+" ビジュアル選択(D&D他)を自動的にクリップボードへ (:help guioptions_a)
+" set guioptions+=a
+
+
+" http://www.geocities.co.jp/SiliconValley-SantaClara/1183/computer/gvim.html
+set iminsert=0 " インサートモードで日本語入力を ON にしない
+set imsearch=0 " 検索モードで日本語入力を ON にしない
+
+" 改行時にコメントしない
+set formatoptions-=ro
+
+augroup vimrc_group_formatoptions
+    autocmd!
+    autocmd FileType * setlocal formatoptions-=ro
+augroup END
+
+" 自動インデント抑止
+set noautoindent 
+set nosmartindent 
+set nocindent 
+set nocopyindent
+set nopaste
+
+
+
+" map th :tabnext<CR>
+nmap tl :tabprev<CR>
+nmap tn :tabnew<CR>
+nmap td :tabclose<CR>
+
+imap <C-k> <Up>
+imap <C-h> <Left>
+imap <C-l> <Right>
+imap <C-j> <Down>
+
+nnoremap <Space>np :<C-u>set paste!<CR>
+

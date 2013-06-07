@@ -1,0 +1,8 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhist_cnt =6
+let g:netrw_dirhist_1='/Users/kenjiskywalker/Dropbox/home/dev/chef/cookbooks/nginx/recipes'
+let g:netrw_dirhist_2='/Users/kenjiskywalker/Dropbox/home/dev/chef/cookbooks/td-agent/recipes'
+let g:netrw_dirhist_3='/Users/kenjiskywalker/Dropbox/home/program/script'
+let g:netrw_dirhist_4='/Users/kenjiskywalker/Dropbox/home/dev/chef/cookbooks/td-agent/recipes'
+let g:netrw_dirhist_5='/Users/kenjiskywalker/Dropbox/home/dev/chef/cookbooks/zabbix-agent/recipes'
+let g:netrw_dirhist_6='/Users/kenjiskywalker/Dropbox/home/dotfiles/.vim/init'

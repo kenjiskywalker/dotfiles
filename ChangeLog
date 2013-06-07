@@ -1,0 +1,53 @@
+2013-06-08  Kenjiskywalker <kenjiskywalker@nightskywalk.er>
+
+	* tpope/vim-endwise install
+
+2013-04-25  Kenjiskywalker <kenjiskywalker@nightskywalk.er>
+
+	* Kibana install
+
+2013-03-30  Kenjiskywalker <kenjiskywalker@nightskywalk.er>
+
+	* autojump => z.sh
+
+2013-03-24  Kenjiskywalker <kenjiskywalker@nightskywalk.er>
+
+	* AirMail
+
+2013-03-08  kenjiskywalker <kenjiskywalker@nightskywalk.er>
+
+	* gvimrcとvimrc分けた
+	* vimのpowerlineなおった
+	* Ruby 2.0 で rake 周りなおった
+
+2013-03-06  kenjiskywalker <kenjiskywalker@nightskywalk.er>
+
+	* NeoBunldeに移行
+	* vimrcの設定を修正
+
+2013-03-02  kenjiskywalker <kenjiskywalker@nightskywalk.er>
+
+	* rvmからrbenv
+
+2013-02-11  Kenjiskywalker <kenjiskywalker@nightskywalk.er>
+
+	* ctrlipまた入れた
+	* restart.vim入れたけど動かない
+	* iTermをpowerline対応のにした
+	* tmuxをpowerlineにした
+	* zshの大文字小文字の補完有効にした
+
+2013-01-27  Kenjiskywalker <kenjiskywalker@nightskywalker.local>
+
+	* powerlineまた入れた
+
+
+2012-12-31  Kenjiskywalker <kenjiskywalker@nightskywalker.local>
+
+	* \o で入力補助
+	* homedirectoryをkenjiからkenjiskywalkerへ変更
+
+2012-12-26  kenjiskywalker <kenji@kenjiskywalker.local>
+
+	* Vim: pangloss/vim-javascript
+	* node描くために

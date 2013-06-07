@@ -1,0 +1,7 @@
+.emacs.d/ac-comphist.dat
+.emacs.d/history
+.emacs.d/tramp
+.emacs.d/.org-id-locations
+.zshrc.alias
+.gitconfig
+*.conf
