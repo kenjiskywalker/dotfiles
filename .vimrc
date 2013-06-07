@@ -21,39 +21,25 @@ source $HOME/.vim/init/neocomplatecache
 
 set encoding=utf-8
 set fileencodings=utf-8,cp932,euc-jp,iso-2022-jp
-
-" コマンドラインの履歴を10000件保存する
-set history=10000
-
-" バックアップファイルを作成しない (次行の先頭の " を削除すれば有効になる)
-set nobackup
-
-" スワップファイルを作成しない
-set noswapfile
-
-"クリックボード共有
-set clipboard+=unnamed
-
-" 現在開いているファイルのある場所に常にcdする
-au   BufEnter *      exec ":lcd " . expand("%:p:h")
+set history=10000                                          " history 1000
+set nobackup                                               " no create backup
+set noswapfile                                             " don't make swapfile
+set clipboard+=unnamed                                     " share clipboard
+au   BufEnter *      exec ":lcd " . expand("%:p:h")        " open current dir
 
 
 
-" EasyMotionの設定
-" =================================================
-" ホームポジションに近いキーを使う
+" EasyMotion
 let g:EasyMotion_keys='hjklasdfgyuiopqwertnmzxcvbHJKLASDFGYUIOPQWERTNMZXCVB'
-" 「'」 + 何かにマッピング
+" 「'」 + anything mapping
 let g:EasyMotion_leader_key="'"
-" 1 ストローク選択を優先する
+" 1 priority stroke
 let g:EasyMotion_grouping=1
-" カラー設定変更
 hi EasyMotionTarget ctermbg=none ctermfg=red
 hi EasyMotionShade  ctermbg=none ctermfg=blue
 
 
-" watchdogs.vim の設定を追加
-" =================================================
+" watchdogs
 let g:quickrun_config = {
 \   "watchdogs_checker/_" : {
 \       "hook/close_quickfix/enable_exit" : 1,
@@ -71,17 +57,14 @@ let g:watchdogs_check_BufWritePost_enable = 1
 call watchdogs#setup(g:quickrun_config)
 
 
-" octopressの設定
-" =================================================
+" octopress
 let g:octopress_path = "$HOME/doc/octopress"
 
-" 突然の
-" =================================================
+" totuzen
 source $HOME/.vim/pluings/totuzen.vim
 
 " Vimfiler
-" =================================================
-" nnoremap <silent> <Leader>fe :<C-u>VimFilerBufferDir -quit<CR>
-" nnoremap <silent> <Leader>fi :<C-u>VimFilerBufferDir -split -simple -winwidth=35 -no-quit<CR>
-"
+nnoremap <silent> <Leader>fe :<C-u>VimFilerBufferDir -quit<CR>
+nnoremap <silent> <Leader>fi :<C-u>VimFilerBufferDir -split -simple -winwidth=35 -no-quit<CR>
+
 
