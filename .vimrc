@@ -25,7 +25,7 @@ set history=10000                                          " history 1000
 set nobackup                                               " no create backup
 set noswapfile                                             " don't make swapfile
 set clipboard+=unnamed                                     " share clipboard
-au   BufEnter *      exec ":lcd " . expand("%:p:h")        " open current dir
+au BufEnter * exec ':lcd %:p:h'
 
 
 
@@ -57,6 +57,9 @@ let g:watchdogs_check_BufWritePost_enable = 1
 call watchdogs#setup(g:quickrun_config)
 
 
+" set autowrite
+set autowriteall
+
 " octopress
 let g:octopress_path = "$HOME/doc/octopress"
 
@@ -67,4 +70,8 @@ source $HOME/.vim/pluings/totuzen.vim
 nnoremap <silent> <Leader>fe :<C-u>VimFilerBufferDir -quit<CR>
 nnoremap <silent> <Leader>fi :<C-u>VimFilerBufferDir -split -simple -winwidth=35 -no-quit<CR>
 
-
+autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
+autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
+autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
+autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
+autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags

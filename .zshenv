@@ -13,3 +13,5 @@ if [ -d ${HOME}/.plenv  ] ; then
     export PATH
     eval "$(plenv init -)"
 fi
+
+export RSENSE_HOME="${HOME}/.vim/bundle/rsense-0.3"

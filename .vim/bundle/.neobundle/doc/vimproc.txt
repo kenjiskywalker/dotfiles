@@ -38,7 +38,7 @@ Changelog		|vimproc-changelog|
 ==============================================================================
 INTRODUCTION					*vimproc-introduction*
 
-|vimproc|is great asynchronous execution library for Vim. Original vimshell is
+|vimproc| is great asynchronous execution library for Vim. Original vimproc is
 created by Yukihiro Nakadaira. But I'm maintaining it now.
 Instead of external shell(example: 'shell'), |vimproc| uses external dll file.
 
@@ -63,9 +63,11 @@ Supported platforms:
 * Cygwin
 * Solaris
 * BSD (but cannot check)
+* Android (experimental)
+
+Note: You must use GNU make to build vimproc.
 
 Not supported platforms:
-* Android (may work but no support)
 * Other UNIX platforms
 
 Below is Make command.
@@ -78,11 +80,8 @@ Below is Make command.
 * Windows using Visual Studio(32bit/64bit Vim): >
 	$ nmake -f Make_msvc.mak nodebug=1
 
-* Mac OS X using LLVM: >
+* Mac OS X: >
 	$ make -f make_mac.mak
-
-* Old Mac OS X(llvm-gcc is not installed): >
-	$ make -f make_mac_old.mak
 
 * Linux/BSD: >
 	$ make -f make_unix.mak
@@ -90,8 +89,11 @@ Below is Make command.
 * Cygwin: >
 	$ make -f make_cygwin.mak
 
-* Solaris/Sun  OS: >
-	$ make -f make_sunos.mak
+* Solaris/SunOS: >
+	$ gmake -f make_sunos.mak
+
+* Android: >
+	$ make -f make_android.mak
 
 After compile, you copy autoload/* and plugin/* files to your
 'runtimepath' directory.
@@ -100,7 +102,7 @@ I compiled vimproc_win**.dll in 32/64 bit Windows, and distributed it below
 URL.
 Note: I DON'T recommend to use it. You should build dll files manually.
 https://github.com/Shougo/vimproc/downloads
-Note: Github dowonloads feature is deprecated. It may be deleted.
+Note: Github downloads feature is deprecated. It may be deleted.
 
 You can use Kaoriya Vim in Windows. It includes vimproc dll file.
 (http://www.kaoriya.net/news/2012/20121213)
@@ -381,6 +383,41 @@ EXAMPLES					*vimproc-examples*
 <
 ==============================================================================
 CHANGELOG					*vimproc-changelog*
+
+2013-06-07
+- Optimized using if_lua.
+
+2013-05-23
+- Fixed fatal resource leak in Windows(required recompile).
+
+2013-05-17
+- Fixed resource leak.
+
+2013-04-28
+- Add starting GUI process support in Windows.
+
+2013-04-17
+- Improved vimproc#readdir().
+
+2013-04-07
+- Fixed vimproc#system_passwd().
+
+2013-03-23
+- Fixed for double quote.
+- Improved catch behavior.
+
+2013-03-20
+- Fixed escape sequence behavior.
+
+2013-03-19
+- Added Android support(experimental).
+
+2013-03-16
+- Fixed expand glob.
+- Fixed backquote.
+
+2013-03-10
+- Changed expand wildcard behavior.
 
 2013-02-16
 - Fixed parse variables.
