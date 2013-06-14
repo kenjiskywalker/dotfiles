@@ -1,3 +1,7 @@
+source $HOME/.vim/init/powerlinerc
+" set statusline+=%<%f\ %m%r%h%w%{'['.(&fenc!=''?&fenc:&enc).']['.&ff.']'}%=%l,%c%V%8P
+" set statusline+=\ %{strftime('%c')}
+
 " display
 "-----------------------------------------------------------
 " Switch syntax highlighting on, when the terminal has colors
@@ -8,6 +12,8 @@ if &t_Co > 2 || has("gui_running")
 endif
 
 set shortmess+=I
+set laststatus=2        " status line
+
 
 " ツールバーを削除
 set guioptions-=T

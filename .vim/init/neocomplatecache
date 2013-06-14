@@ -22,8 +22,13 @@ endif
 let g:neocomplcache_omni_patterns.ruby = '[^. *\t]\.\w*\|\h\w*::'
 
 let g:neocomplcache#sources#rsense#home_directory = '/usr/local/Cellar/rsense/0.3/libexec'
-" 
-let g:neocomplcache_snippets_dir = "~/.vim/snippets"
+
+" Enable snipMate compatibility feature.
+let g:neosnippet#enable_snipmate_compatibility = 1
+
+" Tell Neosnippet about the other snippets
+let g:neosnippet#snippets_directory='~/.vim/snippets'
+
 " Define dictionary.
 " let g:neocomplcache_dictionary_filetype_lists = {
 "     \ 'default'    : '',

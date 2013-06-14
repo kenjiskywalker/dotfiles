@@ -30,5 +30,7 @@ NeoBundle 'mattn/zencoding-vim'
 NeoBundle 'Shougo/vimfiler'
 " NeoBundle 'mileszs/ack'
 NeoBundle 'tpope/vim-endwise'
-NeoBundle 'Shougo/neocomplcache-rsense',{'autoload' : {'filetypes' : ['ruby'], },}
+" NeoBundle 'Shougo/neocomplcache-rsense',{'autoload' : {'filetypes' : ['ruby'], },}
 NeoBundle 'vim-scripts/ruby-matchit'
+
+NeoBundleCheck

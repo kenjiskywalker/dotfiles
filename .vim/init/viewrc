@@ -3,7 +3,6 @@ set shiftwidth=4        " tab width
 set tabstop=4           " tab width
 set softtabstop=4       " tab width
 set showmatch           " match kakko
-set laststatus=2        " status line
 set cmdheight=2
 set showcmd
 set title
@@ -13,19 +12,16 @@ set wildmenu            " complete
 set listchars=tab:>-    " view tab
 set list                " view \n
 set ruler               " view ruler
-set statusline=
-set statusline+=%<%f\ %m%r%h%w%{'['.(&fenc!=''?&fenc:&enc).']['.&ff.']'}%=%l,%c%V%8P
-set statusline+=\ %{strftime('%c')}
 set incsearch
 set hlsearch
 set nowrap
-set guioptions-=r       " disable right scrollbar
-set guioptions-=l       " disable left scrollbar
-set guioptions-=T       " disable toolber
-
-set guioptions-=L
-set guioptions-=m       " disable menu
-set guioptions+=c
+" set guioptions-=r       " disable right scrollbar
+" set guioptions-=l       " disable left scrollbar
+" set guioptions-=T       " disable toolber
+" 
+" set guioptions-=L
+" set guioptions-=m       " disable menu
+" set guioptions+=c
 
 set list
 set listchars=tab:>-,trail:-,extends:>,precedes:<
@@ -40,8 +36,8 @@ if &t_Co > 2 || has("gui_running")
   set hlsearch
 endif
 
-set shortmess+=I
-set lines=70 columns=210
+" set shortmess+=I
+" set lines=70 columns=210
 
 colorscheme molokai
 " set background=dark

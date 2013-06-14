@@ -13,7 +13,6 @@ syntax on
 
 " another file
 source $HOME/.vim/init/bundlerc
-source $HOME/.vim/init/powerlinerc
 source $HOME/.vim/init/uniterc
 source $HOME/.vim/init/langrc
 source $HOME/.vim/init/viewrc
@@ -27,6 +26,7 @@ set noswapfile                                             " don't make swapfile
 set clipboard+=unnamed                                     " share clipboard
 au BufEnter * exec ':lcd %:p:h'
 
+autocmd FileType * set formatoptions-=ro " disable auto comment out
 
 
 " EasyMotion
@@ -47,6 +47,13 @@ let g:quickrun_config = {
 \   "ruby" : {
 \       "cmdopt" : "-Ku",
 \       "type" : "ruby"
+\   },
+\   "markdown" : {
+\       'outputter' : 'null',
+\       'command'   : 'open',
+\       'cmdopt'    : '-a',
+\       'args'      : 'Marked',
+\       'exec'      : '%c %o %a %s',
 \   },
 \   "_" : { "outputter/buffer/into" : 1,}
 \}
@@ -70,8 +77,3 @@ source $HOME/.vim/pluings/totuzen.vim
 nnoremap <silent> <Leader>fe :<C-u>VimFilerBufferDir -quit<CR>
 nnoremap <silent> <Leader>fi :<C-u>VimFilerBufferDir -split -simple -winwidth=35 -no-quit<CR>
 
-autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
-autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
-autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
-autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
-autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
