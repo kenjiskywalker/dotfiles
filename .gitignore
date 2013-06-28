@@ -7,3 +7,4 @@
 *.conf
 .netrwhist
 .irssi*
+.DS_Store

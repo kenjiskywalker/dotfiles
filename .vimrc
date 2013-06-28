@@ -16,7 +16,9 @@ source $HOME/.vim/init/bundlerc
 source $HOME/.vim/init/uniterc
 source $HOME/.vim/init/langrc
 source $HOME/.vim/init/viewrc
+source $HOME/.vim/init/insertrc
 source $HOME/.vim/init/neocomplatecache
+source $HOME/.vim/init/memolist
 
 set encoding=utf-8
 set fileencodings=utf-8,cp932,euc-jp,iso-2022-jp
@@ -68,7 +70,7 @@ call watchdogs#setup(g:quickrun_config)
 set autowriteall
 
 " octopress
-let g:octopress_path = "$HOME/doc/octopress"
+let g:octopress_path = "$HOME/octopress"
 
 " totuzen
 source $HOME/.vim/pluings/totuzen.vim

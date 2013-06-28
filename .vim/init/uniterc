@@ -14,3 +14,17 @@ noremap <C-U><C-Y> :Unite -buffer-name=register register<CR>
 noremap <C-U><C-U> :Unite buffer file_mru<CR>
 " 全部
 noremap <C-U><C-A> :Unite UniteWithBufferDir -buffer-name=files buffer file_mru bookmark file<CR>
+
+
+autocmd FileType unite call s:unite_my_settings()
+function! s:unite_my_settings()
+  nmap <buffer> <Esc><Esc> <Plug>(unite_all_exit)
+  imap <buffer> <Esc><Esc> <Esc><Plug>(unite_all_exit)
+  imap <buffer> <C-w> <Plug>(unite_delete_backward_path)
+  nnoremap <silent><buffer><expr> <C-k> unite#do_action('vsplit')
+  inoremap <silent><buffer><expr> <C-k> unite#do_action('vsplit')
+  nnoremap <silent><buffer><expr> <C-j> unite#do_action('split')
+  inoremap <silent><buffer><expr> <C-j> unite#do_action('split')
+endfunction
+
+

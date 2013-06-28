@@ -1,3 +1,13 @@
+2013-06-26  Kenjiskywalker <kenjiskywalker@nightskywalk.er>
+
+	* zsh-completionsを設定
+
+2013-06-24  Kenjiskywalker <kenjiskywalker@nightskywalk.er>
+
+	* memolist.vim install
+	* ag.vim install
+	* qfixhowm.vim install
+
 2013-06-08  Kenjiskywalker <kenjiskywalker@nightskywalk.er>
 
 	* tpope/vim-endwise install

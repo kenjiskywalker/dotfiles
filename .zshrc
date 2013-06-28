@@ -18,11 +18,15 @@ setopt hist_no_store         # historyコマンドは履歴に登録しない
 setopt hist_reduce_blanks    # 余分な空白は詰めて記録
 #setopt hist_ignore_space    # 先頭がスペースの場合、ヒストリに追加しない
 
+
+# zsh-completions
+fpath=(/usr/local/share/zsh-completions $fpath)
+
 # 標準の補完設定
 # autoload -U compinit
 # compinit -u
 autoload -U compinit
-compinit
+compinit -u
 zstyle ':completion:*:default' menu select=1
 
 # ディレクトリ名を入力するだけでカレントディレクトリを変更

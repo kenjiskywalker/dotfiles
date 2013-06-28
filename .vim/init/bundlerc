@@ -28,9 +28,12 @@ NeoBundle 'git://github.com/glidenote/octoeditor.vim.git'
 NeoBundle 'sakuraiyuta/commentout.vim'
 NeoBundle 'mattn/zencoding-vim'
 NeoBundle 'Shougo/vimfiler'
-" NeoBundle 'mileszs/ack'
+NeoBundle 'rking/ag.vim'
 NeoBundle 'tpope/vim-endwise'
 " NeoBundle 'Shougo/neocomplcache-rsense',{'autoload' : {'filetypes' : ['ruby'], },}
 NeoBundle 'vim-scripts/ruby-matchit'
+NeoBundle 'glidenote/newdayone.vim'
+NeoBundle 'glidenote/memolist.vim'
+NeoBundle 'fuenor/qfixgrep'
 
 NeoBundleCheck

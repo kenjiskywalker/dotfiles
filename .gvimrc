@@ -19,6 +19,7 @@ set laststatus=2        " status line
 set guioptions-=T
 
 set guioptions-=l " 左スクロールバー非表示
+set guioptions-=r " 右スクロールバー非表示
 
 set guioptions-=L
 "メニューを削除
