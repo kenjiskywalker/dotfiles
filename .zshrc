@@ -335,3 +335,6 @@ precmd() {
   _z --add "$(pwd -P)"
 }
 fi
+
+
+export BERKSHELF_PATH=/Users/kenjiskywalker/mychefrepo/
