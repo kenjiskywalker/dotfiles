@@ -79,3 +79,5 @@ source $HOME/.vim/pluings/totuzen.vim
 nnoremap <silent> <Leader>fe :<C-u>VimFilerBufferDir -quit<CR>
 nnoremap <silent> <Leader>fi :<C-u>VimFilerBufferDir -split -simple -winwidth=35 -no-quit<CR>
 
+" VimShell
+nnoremap <silent> <Leader>vv :VimShell<CR>

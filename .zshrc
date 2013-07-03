@@ -1,7 +1,7 @@
 export LANG=ja_JP.UTF-8
 
 PATH=$HOME:/usr/sbin:/usr/local/Cellar/imagemagick/6.6.4-5/bin:/opt/local/bin:/opt/depot_tools:/Developer/usr/bin:
-PATH=$PATH:/usr/local/bin:/bin:/usr/bin:/sbin:/usr/local/sbin:/usr/local/share/python3:
+PATH=$PATH:/usr/local/bin:/bin:/usr/bin:/sbin:/usr/local/sbin:/usr/local/share/python3:/usr/local/etc
 export PATH
 
 TERM=xterm-256color
@@ -48,7 +48,7 @@ setopt list_packed
 setopt list_types
 
 # パスの最後に付くスラッシュを自動的に削除しない
-# setopt noautoremoveslash
+setopt noautoremoveslash
 
 # cd - と入力してTabキーで今までに移動したディレクトリを一覧表示
 setopt auto_pushd
@@ -323,18 +323,36 @@ fi
 
 ### z.sh
 
-if [ -f $HOME/.zsh/z.sh ]; then
+autoload -Uz is-at-least
 
-_Z_CMD=j
-source $HOME/.zsh/z.sh
-precmd() {
-  _z --add "$(pwd -P)"
-}
-  
-precmd() {
-  _z --add "$(pwd -P)"
-}
+# Treat hook functions as array
+typeset -ga chpwd_functions
+typeset -ga precmd_functions
+typeset -ga preexec_functions
+
+# Simulate hook functions for older versions
+if ! is-at-least 4.2.7; then
+  function chpwd() { local f; for f in $chpwd_functions; do $f; done }
+  function precmd() { local f; for f in $precmd_functions; do $f; done }
+  function preexec() { local f; for f in $preexec_functions; do $f; done }
 fi
 
+function load-if-exists() { test -e "$1" && source "$1" }
 
-export BERKSHELF_PATH=/Users/kenjiskywalker/mychefrepo/
+# z - jump around {{{2
+# https://github.com/rupa/z
+_Z_CMD=j
+_Z_DATA=$HOME/.z
+if is-at-least 4.3.9; then
+  load-if-exists $HOME/.zsh/z/z.sh
+else
+  _Z_NO_PROMPT_COMMAND=1
+  load-if-exists $HOME/.zsh/z/z.sh && {
+    function precmd_z() {
+      _z --add "$(pwd -P)"
+    }
+    precmd_functions+=precmd_z
+  }
+fi
+test $? || unset _Z_CMD _Z_DATA _Z_NO_PROMPT_COMMAND
+#}}}
