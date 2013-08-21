@@ -2,7 +2,7 @@
 .emacs.d/history
 .emacs.d/tramp
 .emacs.d/.org-id-locations
-./.vim/bundle/.neobundle/
+.vim/bundle/.neobundle/
 .zshrc.alias
 .gitconfig
 *.conf
