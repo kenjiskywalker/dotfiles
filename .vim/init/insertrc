@@ -14,7 +14,7 @@ imap <C-h> <Left>
 imap <C-l> <Right>
 imap <C-j> <Down>
 
-inoremap :set iminsert=0
+" inoremap :set iminsert=0
 
 inoremap <silent> <Esc> <Esc>
 inoremap <silent> <C-[> <Esc>
@@ -24,20 +24,20 @@ vnoremap <silent>a ::Tabularize/=<CR>
 
 " out insert mode to IME off
 " set noimdisable
-set imdisable
 " http://www.geocities.co.jp/SiliconValley-SantaClara/1183/computer/gvim.html
 set iminsert=0
 set imsearch=0
+set imdisable
 
-set noautoindent 
-set nosmartindent 
-set nocindent 
-set nocopyindent
-set nopaste
-
-set nomousefocus
-set mousehide
-
+" set noautoindent 
+" set nosmartindent 
+" set nocindent 
+" set nocopyindent
+" set nopaste
+" 
+" set nomousefocus
+" set mousehide
+" 
 set formatoptions-=ro
 
 augroup vimrc_group_formatoptions

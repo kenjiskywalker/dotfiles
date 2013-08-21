@@ -65,7 +65,6 @@ let g:watchdogs_check_BufWritePost_enable = 1
 
 call watchdogs#setup(g:quickrun_config)
 
-
 " set autowrite
 set autowriteall
 
@@ -81,3 +80,6 @@ nnoremap <silent> <Leader>fi :<C-u>VimFilerBufferDir -split -simple -winwidth=35
 
 " VimShell
 nnoremap <silent> <Leader>vv :VimShell<CR>
+
+" tagsƒWƒƒƒ“ƒv‚Ì‚É•¡”‚ ‚é‚Íˆê——•\¦                                        
+nnoremap <C-]> g<C-]> 

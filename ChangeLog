@@ -1,3 +1,15 @@
+2013-08-21  Kenjiskywalker <kenjiskywalker@nightskywalk.er>
+
+	* add bling/vim-airline
+
+2013-08-11  Kenjiskywalker <kenjiskywalker@nightskywalk.er>
+
+	* add airblade/vim-gitgutter
+
+2013-07-09  Kenjiskywalker <kenjiskywalker@nightskywalk.er>
+
+	* add PATH:/usr/local/share/npm/bin
+
 2013-07-03  Kenjiskywalker <kenjiskywalker@nightskywalk.er>
 
 	* godlygeek/tabular install

@@ -28,6 +28,8 @@ set guioptions+=c
 
 set lines=70 columns=210
 
+set transparency=10
+
 "-----------------------------------------------------------
 
 "クリックボード共有

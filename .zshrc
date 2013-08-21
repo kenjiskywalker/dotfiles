@@ -1,7 +1,7 @@
 export LANG=ja_JP.UTF-8
 
 PATH=$HOME:/usr/sbin:/usr/local/Cellar/imagemagick/6.6.4-5/bin:/opt/local/bin:/opt/depot_tools:/Developer/usr/bin:
-PATH=$PATH:/usr/local/bin:/bin:/usr/bin:/sbin:/usr/local/sbin:/usr/local/share/python3:/usr/local/etc
+PATH=$PATH:/usr/local/bin:/bin:/usr/bin:/sbin:/usr/local/sbin:/usr/local/share/python3:/usr/local/etc:/usr/local/share/npm/bin
 export PATH
 
 TERM=xterm-256color
@@ -306,6 +306,8 @@ compdef hub=git
 AWS_CONFIG_FILE=~/awscli.conf
 export AWS_CONFIG_FILE
 
+autoload bashcompinit
+bashcompinit
 source ~/.zsh/zsh_complete.sh
 
 # 大文字小文字を区別しない
@@ -356,3 +358,10 @@ else
 fi
 test $? || unset _Z_CMD _Z_DATA _Z_NO_PROMPT_COMMAND
 #}}}
+
+
+# / で手前まで戻る
+WORDCHARS='*?_-.[]~=&;!#$%^(){}<>'
+
+### Added by the Heroku Toolbelt
+export PATH="/usr/local/heroku/bin:$PATH"
