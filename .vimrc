@@ -28,12 +28,11 @@ set noswapfile                                             " don't make swapfile
 set clipboard+=unnamed                                     " share clipboard
 au BufEnter * exec ':lcd %:p:h'
 
-autocmd FileType * set formatoptions-=ro " disable auto comment out
-
+" autocmd FileType * set formatoptions-=ro " disable auto comment out
 
 " EasyMotion
 let g:EasyMotion_keys='hjklasdfgyuiopqwertnmzxcvbHJKLASDFGYUIOPQWERTNMZXCVB'
-" u'v + anything mapping
+" ã€Œ'ã€ + anything mapping
 let g:EasyMotion_leader_key="'"
 " 1 priority stroke
 let g:EasyMotion_grouping=1
@@ -43,13 +42,7 @@ hi EasyMotionShade  ctermbg=none ctermfg=blue
 
 " watchdogs
 let g:quickrun_config = {
-\   "watchdogs_checker/_" : {
-\       "hook/close_quickfix/enable_exit" : 1,
-\   },
-\   "ruby" : {
-\       "cmdopt" : "-Ku",
-\       "type" : "ruby"
-\   },
+\  "_" : { "outputter/buffer/into" : 1,},}
 \   "markdown" : {
 \       'outputter' : 'null',
 \       'command'   : 'open',
@@ -57,7 +50,13 @@ let g:quickrun_config = {
 \       'args'      : 'Marked',
 \       'exec'      : '%c %o %a %s',
 \   },
-\   "_" : { "outputter/buffer/into" : 1,}
+\  "go": {
+\    'command': '8g',
+\    'exec': ['8g %s', '8l -o %s:p:r %s:p:r.8', '%s:p:r %a', 'rm -f %s:p:r']
+\   },
+\   "watchdogs_checker/_" : {
+\       "hook/close_quickfix/enable_exit" : 1,
+\   },
 \}
 
 let g:watchdogs_check_CursorHold_enable = 1
@@ -71,9 +70,6 @@ set autowriteall
 " octopress
 let g:octopress_path = "$HOME/octopress"
 
-" totuzen
-source $HOME/.vim/pluings/totuzen.vim
-
 " Vimfiler
 nnoremap <silent> <Leader>fe :<C-u>VimFilerBufferDir -quit<CR>
 nnoremap <silent> <Leader>fi :<C-u>VimFilerBufferDir -split -simple -winwidth=35 -no-quit<CR>
@@ -81,5 +77,15 @@ nnoremap <silent> <Leader>fi :<C-u>VimFilerBufferDir -split -simple -winwidth=35
 " VimShell
 nnoremap <silent> <Leader>vv :VimShell<CR>
 
-" tagsƒWƒƒƒ“ƒv‚Ì‚É•¡”‚ ‚é‚Íˆê——•\¦                                        
+" tagsã‚¸ãƒ£ãƒ³ãƒ—ã®æ™‚ã«è¤‡æ•°ã‚ã‚‹æ™‚ã¯ä¸€è¦§è¡¨ç¤º                                        
 nnoremap <C-]> g<C-]> 
+
+" golang
+" filetype off
+" filetype plugin indent off
+" set runtimepath+=$GOROOT/misc/vim
+" filetype plugin indent on
+" syntax on
+
+let g:gitgutter_realtime = 0
+let g:gitgutter_eager = 0

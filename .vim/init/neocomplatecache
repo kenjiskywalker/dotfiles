@@ -1,38 +1,29 @@
-" Disable AutoComplPop. Comment out this line if AutoComplPop is not installed.
-" let g:acp_enableAtStartup = 0
-" Launches neocomplcache automatically on vim startup.
+"起動時に有効
 let g:neocomplcache_enable_at_startup = 1
-" Use smartcase.
+"ポップアップメニューで表示される候補の数。初期値は100
+let g:neocomplcache_max_list = 5
+"自動補完を行う入力数を設定。初期値は2
+let g:neocomplcache_auto_completion_start_length = 2
+"手動補完時に補完を行う入力数を制御。値を小さくすると文字の削除時に重くなる
+let g:neocomplcache_manual_completion_start_length = 3
+"バッファや辞書ファイル中で、補完の対象となるキーワードの最小長さ。初期値は4。
+let g:neocomplcache_min_keyword_length = 4
+"シンタックスファイル中で、補完の対象となるキーワードの最小長さ。初期値は4。
+let g:neocomplcache_min_syntax_length = 4
+"1:補完候補検索時に大文字・小文字を無視する
+let g:neocomplcache_enable_ignore_case = 1
+"入力に大文字が入力されている場合、大文字小文字の区別をする
 let g:neocomplcache_enable_smart_case = 1
-" Use camel case completion.
-let g:neocomplcache_enable_camel_case_completion = 1
-" Use underscore completion.
-let g:neocomplcache_enable_underbar_completion = 1
-" Sets minimum char length of syntax keyword.
-let g:neocomplcache_min_syntax_length = 3
-" buffer file name pattern that locks neocomplcache. e.g. ku.vim or fuzzyfinder 
-let g:neocomplcache_lock_buffer_name_pattern = '\*ku\*'
+"ポップアップメニューが出ているときに-を入力すると英数字で候補選択する。
 
-let g:rsenseUseOmniFunc = 1
+" let g:rsenseuseomnifunc = 1
 
 if !exists('g:neocomplcache_omni_patterns')
-  let g:neocomplcache_omni_patterns = {}
+    let g:neocomplcache_omni_patterns = {}
 endif
 
+" golang
+let g:neocomplcache_omni_patterns.go = '\h\w*\.\?'
+
+" ruby
 let g:neocomplcache_omni_patterns.ruby = '[^. *\t]\.\w*\|\h\w*::'
-
-let g:neocomplcache#sources#rsense#home_directory = '/usr/local/Cellar/rsense/0.3/libexec'
-
-" Enable snipMate compatibility feature.
-let g:neosnippet#enable_snipmate_compatibility = 1
-
-" Tell Neosnippet about the other snippets
-let g:neosnippet#snippets_directory='~/.vim/snippets'
-
-" Define dictionary.
-" let g:neocomplcache_dictionary_filetype_lists = {
-"     \ 'default'    : '',
-"     \ 'perl'       : $HOME . '/.vim/dict/perl.dict'
-"     \ }
-
-

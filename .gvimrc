@@ -1,7 +1,3 @@
-source $HOME/.vim/init/powerlinerc
-" set statusline+=%<%f\ %m%r%h%w%{'['.(&fenc!=''?&fenc:&enc).']['.&ff.']'}%=%l,%c%V%8P
-" set statusline+=\ %{strftime('%c')}
-
 " display
 "-----------------------------------------------------------
 " Switch syntax highlighting on, when the terminal has colors
@@ -28,6 +24,7 @@ set guioptions+=c
 
 set lines=70 columns=210
 
+"“§‰ß
 set transparency=10
 
 "-----------------------------------------------------------

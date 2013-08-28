@@ -29,6 +29,10 @@ augroup filetype
   au! BufRead,BufNewFile *.ll     set filetype=llvm
 augroup END
 
+" golang
+auto BufWritePre *.go Fmt
+au BufNewFile,BufRead *.go set filetype=go
+autocmd FileType go setl ts=8 sw=8 expandtab
 
 autocmd BufNewFile,BufRead *.{md,mdwn,mkd,mkdn,mark*} set filetype=markdown
 autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS

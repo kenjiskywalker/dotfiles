@@ -20,14 +20,10 @@ setopt hist_reduce_blanks    # 余分な空白は詰めて記録
 
 
 # zsh-completions
-fpath=(/usr/local/share/zsh-completions $fpath)
+fpath=(~/.zsh/completion $fpath)
 
-# 標準の補完設定
-# autoload -U compinit
-# compinit -u
 autoload -U compinit
 compinit -u
-zstyle ':completion:*:default' menu select=1
 
 # ディレクトリ名を入力するだけでカレントディレクトリを変更
 setopt auto_cd
@@ -209,19 +205,15 @@ zle -N incremental-search-history-menu
 source ~/.zsh/zaw/zaw.zsh 
 bindkey '^R' zaw-history
 
-### autojump
-# source ~/.zsh/.autojump/etc/profile.d/autojump.zsh
-## [[ -s /etc/profile.d/autojump.zsh ]] && source /etc/profile.d/autojump.zsh
-
 ### auto-fu
-if [ -f ~/.zsh/auto-fu.zsh/auto-fu.zsh ]; then
-source ~/.zsh/auto-fu.zsh/auto-fu.zsh
-    function zle-line-init () {
-        auto-fu-init
-    }
-    zle -N zle-line-init
-    zstyle ':completion:*' completer _oldlist _complete
-fi
+# if [ -f ~/.zsh/auto-fu.zsh ]; then
+# source ~/.zsh/auto-fu.zsh
+#     function zle-line-init () {
+#         auto-fu-init
+#     }
+#     zle -N zle-line-init
+#     zstyle ':completion:*' completer _oldlist _complete
+# fi
 
 ### Emacs
 [[ $EMACS = t ]] && unsetopt zle
@@ -249,7 +241,7 @@ alias ls="ls -G"
 # add-zsh-hook chpwd chpwd_recent_dirs
 # zstyle ':chpwd:*' recent-dirs-max 5000
 # zstyle ':chpwd:*' recent-dirs-default yes
-# zstyle ':completion:*' recent-dirs-insert both
+zstyle ':completion:*:default' menu select=1
 
 zstyle ':filter-select' case-insensitive yes # 絞り込みをcase-insensitiveに
 # bindkey '^@' zaw-cdr # zaw-cdrをbindkey
@@ -300,15 +292,12 @@ REPORTTIME=3
 
 [ -f ~/.zshrc.alias ] && source ~/.zshrc.alias
 
-compdef hub=git
-
 # AWS
 AWS_CONFIG_FILE=~/awscli.conf
 export AWS_CONFIG_FILE
 
-autoload bashcompinit
-bashcompinit
-source ~/.zsh/zsh_complete.sh
+# autoload bashcompinit
+# bashcompinit
 
 # 大文字小文字を区別しない
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
@@ -365,3 +354,29 @@ WORDCHARS='*?_-.[]~=&;!#$%^(){}<>'
 
 ### Added by the Heroku Toolbelt
 export PATH="/usr/local/heroku/bin:$PATH"
+
+
+### golang
+program_exists () {
+  type "$1" &> /dev/null ;
+}
+
+if program_exists go; then
+  function setupGOROOT()
+  {
+    local GOPATH=`which go`
+    local GODIR=`dirname $GOPATH`
+    local GOPATH_BREW_RELATIVE=`readlink $GOPATH`
+    local GOPATH_BREW=`dirname $GOPATH_BREW_RELATIVE`
+    export GOROOT=`cd $GODIR; cd $GOPATH_BREW/..; pwd`
+  }
+  setupGOROOT
+fi
+export GOPATH=$HOME/.go
+export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
+
+# 補完後，不要な "/" を削除する/しない
+# auto-fu.zsh を利用する場合、autoremoveslash を unsetopt しておかないと
+# パスを補完した際にスラッシュが二重になる。
+#setopt no_auto_remove_slash
+unsetopt no_auto_remove_slash

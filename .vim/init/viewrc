@@ -47,3 +47,7 @@ colorscheme molokai
 " set highlight
 execute "highlight ucurl_my gui=undercurl guisp=Red"
 let g:hier_highlight_group_qf = "ucurl_my"
+
+let g:lightline = {
+      \ 'colorscheme': 'jellybeans'
+      \ }
