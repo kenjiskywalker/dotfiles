@@ -51,3 +51,7 @@ let g:hier_highlight_group_qf = "ucurl_my"
 let g:lightline = {
       \ 'colorscheme': 'jellybeans'
       \ }
+
+
+set ttyfast
+set lazyredraw

@@ -33,6 +33,7 @@ augroup END
 auto BufWritePre *.go Fmt
 au BufNewFile,BufRead *.go set filetype=go
 autocmd FileType go setl ts=8 sw=8 expandtab
+autocmd BufNewFile *.go 0r $HOME/.vim/template/template.go
 
 autocmd BufNewFile,BufRead *.{md,mdwn,mkd,mkdn,mark*} set filetype=markdown
 autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS

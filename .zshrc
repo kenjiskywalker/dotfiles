@@ -380,3 +380,6 @@ export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
 # パスを補完した際にスラッシュが二重になる。
 #setopt no_auto_remove_slash
 unsetopt no_auto_remove_slash
+
+# 右のプロンプト消す
+setopt transient_rprompt

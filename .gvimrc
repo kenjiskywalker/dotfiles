@@ -39,3 +39,6 @@ colorscheme Tomorrow-Night
 
 " 現在開いているファイルのある場所に常にcdする
 au   BufEnter *      exec ":lcd " . expand("%:p:h")
+
+" インサートモードを抜けたらIMEをオフ
+inoremap <silent> <ESC> <ESC>:set iminsert=0<CR>
