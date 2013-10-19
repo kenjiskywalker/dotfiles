@@ -1,4 +1,11 @@
-set nocompatible               " Be iMproved
+let $PATH = $PATH . ':/opt/local/bin'
+
+set nocompatible " Be iMproved
+
+" gocode
+set rtp+=$GOROOT/misc/vim
+" "golint
+exe "set rtp+=" . globpath($GOPATH, "src/github.com/golang/lint/misc/vim")
 
 if has('vim_starting')
   set runtimepath+=~/.vim/bundle/neobundle.vim/
@@ -8,9 +15,6 @@ call neobundle#rc(expand('~/.vim/bundle/'))
 
 NeoBundleFetch 'Shougo/neobundle.vim'
 
-filetype plugin indent on
-syntax on
-
 " another file
 source $HOME/.vim/init/bundlerc
 source $HOME/.vim/init/uniterc
@@ -19,6 +23,9 @@ source $HOME/.vim/init/viewrc
 source $HOME/.vim/init/insertrc
 source $HOME/.vim/init/neocomplatecache
 source $HOME/.vim/init/memolist
+
+filetype plugin indent on
+syntax on
 
 set encoding=utf-8
 set fileencodings=utf-8,cp932,euc-jp,iso-2022-jp
@@ -77,15 +84,8 @@ nnoremap <silent> <Leader>fi :<C-u>VimFilerBufferDir -split -simple -winwidth=35
 " VimShell
 nnoremap <silent> <Leader>vv :VimShell<CR>
 
-" tagsジャンプの時に複数ある時は一覧表示                                        
+" tagsジャンプの時に複数ある時は一覧表示
 nnoremap <C-]> g<C-]> 
 
-" golang
-" filetype off
-" filetype plugin indent off
-" set runtimepath+=$GOROOT/misc/vim
-" filetype plugin indent on
-" syntax on
-
 let g:gitgutter_realtime = 0
-let g:gitgutter_eager = 0
+let g:gitgutter_eager = 1

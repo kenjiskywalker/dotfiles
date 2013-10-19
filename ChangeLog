@@ -1,3 +1,11 @@
+2013-10-20  Kenjiskywalker <kenjiskywalker@nightskywalk.er>
+
+	* doing gocode!!!
+
+2013-10-19  Kenjiskywalker <kenjiskywalker@nightskywalk.er>
+
+	* let g:neocomplcache#sources#rsense#home_directory = '/opt/rsense-0.3'
+
 2013-08-26  Kenjiskywalker <kenjiskywalker@nightskywalk.er>
 
 	* auto-fu.zsh add

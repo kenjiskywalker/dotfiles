@@ -1,7 +1,7 @@
 export LANG=ja_JP.UTF-8
 
-PATH=$HOME:/usr/sbin:/usr/local/Cellar/imagemagick/6.6.4-5/bin:/opt/local/bin:/opt/depot_tools:/Developer/usr/bin:
-PATH=$PATH:/usr/local/bin:/bin:/usr/bin:/sbin:/usr/local/sbin:/usr/local/share/python3:/usr/local/etc:/usr/local/share/npm/bin
+PATH=$HOME:/usr/sbin:/usr/local/Cellar/imagemagick/6.6.4-5/bin:/opt/local/bin:/opt/depot_tools:/Developer/usr/bin:/bin/go_appengine
+PATH=$PATH:/usr/local/bin:/bin:/usr/bin:/sbin:/usr/local/sbin:/usr/local/share/python3:/usr/local/etc:/usr/local/share/npm/bin:$HOME/bin/
 export PATH
 
 TERM=xterm-256color
@@ -58,7 +58,7 @@ unsetopt no_clobber          # リダイレクトで上書きを許可
 bindkey '^U' backward-kill-line
 
 # Ctrl-h で単語ごとに削除
-bindkey "^h" backward-kill-word
+# bindkey "^h" backward-kill-word
 
 # clipboardの共有
 set clipboard=unnamed
@@ -302,18 +302,12 @@ export AWS_CONFIG_FILE
 # 大文字小文字を区別しない
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
 
-### perlbrew
-if [ -f $HOME/.perlbrew/etc/bashrc ]; then
-  source $HOME/.perlbrew/etc/bashrc
-fi
-
 ### zshenv
 if [ -f $HOME/.zshenv ]; then
   source $HOME/.zshenv
 fi
 
 ### z.sh
-
 autoload -Uz is-at-least
 
 # Treat hook functions as array
@@ -353,27 +347,13 @@ test $? || unset _Z_CMD _Z_DATA _Z_NO_PROMPT_COMMAND
 WORDCHARS='*?_-.[]~=&;!#$%^(){}<>'
 
 ### Added by the Heroku Toolbelt
-export PATH="/usr/local/heroku/bin:$PATH"
+# export PATH="/usr/local/heroku/bin:$PATH"
 
 
 ### golang
-program_exists () {
-  type "$1" &> /dev/null ;
-}
-
-if program_exists go; then
-  function setupGOROOT()
-  {
-    local GOPATH=`which go`
-    local GODIR=`dirname $GOPATH`
-    local GOPATH_BREW_RELATIVE=`readlink $GOPATH`
-    local GOPATH_BREW=`dirname $GOPATH_BREW_RELATIVE`
-    export GOROOT=`cd $GODIR; cd $GOPATH_BREW/..; pwd`
-  }
-  setupGOROOT
-fi
-export GOPATH=$HOME/.go
-export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
+export GOROOT=$HOME/go
+export GOPATH=$HOME/gocode
+export PATH=$PATH:$GOROOT/bin
 
 # 補完後，不要な "/" を削除する/しない
 # auto-fu.zsh を利用する場合、autoremoveslash を unsetopt しておかないと
@@ -383,3 +363,7 @@ unsetopt no_auto_remove_slash
 
 # 右のプロンプト消す
 setopt transient_rprompt
+
+# nokogiriのヤツ
+export DYLD_LIBRARY_PATH=/usr/local/opt/libxml2/lib:$DYLD_LIBRARY_PATH
+# unset DYLD_LIBRARY_PATH
