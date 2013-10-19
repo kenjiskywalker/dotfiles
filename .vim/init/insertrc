@@ -1,8 +1,6 @@
 " Emacs
 imap <C-e> <END>
 imap <C-g> <ESC>
-" noremap ; :
-" noremap : ;
 
 " map th :tabnext<CR>
 nmap tl :tabprev<CR>
@@ -10,11 +8,13 @@ nmap tn :tabnew<CR>
 nmap td :tabclose<CR>
 
 imap <C-k> <Up>
-imap <C-h> <Left>
+imap <C-p> <Up>
+" imap <C-h> <Left>
+imap <C-b> <Left>
 imap <C-l> <Right>
+imap <C-f> <Right>
 imap <C-j> <Down>
-
-" inoremap :set iminsert=0
+imap <C-n> <Down>
 
 inoremap <silent> <Esc> <Esc>
 inoremap <silent> <C-[> <Esc>
@@ -27,20 +27,6 @@ vnoremap <silent>a ::Tabularize/=<CR>
 " http://www.geocities.co.jp/SiliconValley-SantaClara/1183/computer/gvim.html
 set iminsert=0
 set imsearch=0
-set imdisable
 
-" set noautoindent 
-" set nosmartindent 
-" set nocindent 
-" set nocopyindent
-" set nopaste
-" 
-" set nomousefocus
-" set mousehide
-" 
+" コメントアウト勝手に入るの止める
 set formatoptions-=ro
-
-augroup vimrc_group_formatoptions
-    autocmd!
-    autocmd FileType * setlocal formatoptions-=ro
-augroup END

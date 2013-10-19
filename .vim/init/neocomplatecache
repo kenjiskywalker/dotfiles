@@ -1,7 +1,7 @@
 "起動時に有効
 let g:neocomplcache_enable_at_startup = 1
 "ポップアップメニューで表示される候補の数。初期値は100
-let g:neocomplcache_max_list = 5
+let g:neocomplcache_max_list = 10
 "自動補完を行う入力数を設定。初期値は2
 let g:neocomplcache_auto_completion_start_length = 2
 "手動補完時に補完を行う入力数を制御。値を小さくすると文字の削除時に重くなる
@@ -14,16 +14,18 @@ let g:neocomplcache_min_syntax_length = 4
 let g:neocomplcache_enable_ignore_case = 1
 "入力に大文字が入力されている場合、大文字小文字の区別をする
 let g:neocomplcache_enable_smart_case = 1
-"ポップアップメニューが出ているときに-を入力すると英数字で候補選択する。
+"改行はしない
 
-" let g:rsenseuseomnifunc = 1
-
+""" Enable heavy omni completion.
 if !exists('g:neocomplcache_omni_patterns')
-    let g:neocomplcache_omni_patterns = {}
+  let g:neocomplcache_omni_patterns = {}
 endif
 
-" golang
-let g:neocomplcache_omni_patterns.go = '\h\w*\.\?'
+""" golang
+" let g:neocomplcache_omni_patterns.go = '\h\w*\.\?'
 
-" ruby
-let g:neocomplcache_omni_patterns.ruby = '[^. *\t]\.\w*\|\h\w*::'
+""" ruby
+let g:neocomplcache_omni_patterns.ruby = '[^. *\t]\.\h\w*\|\h\w*::'
+
+""" perl
+let g:neocomplcache_omni_patterns.perl = '\h\w*->\h\w*\|\h\w*::'

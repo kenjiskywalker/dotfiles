@@ -55,3 +55,7 @@ let g:lightline = {
 
 set ttyfast
 set lazyredraw
+
+" unite-outline
+nnoremap <silent> <Leader>o :<C-u>Unite -vertical -no-quit outline<CR>
+let g:unite_winwidth = 40

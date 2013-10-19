@@ -27,4 +27,7 @@ function! s:unite_my_settings()
   inoremap <silent><buffer><expr> <C-j> unite#do_action('split')
 endfunction
 
-
+augroup AutoCD
+  autocmd!
+  autocmd BufEnter * lcd %:p:h
+augroup END

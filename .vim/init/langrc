@@ -8,13 +8,13 @@ autocmd BufNewFile *.pl 0r $HOME/.vim/template/template.pl
 autocmd BufNewFile,BufRead *.psgi   set filetype=perl
 autocmd BufNewFile,BufRead *.t      set filetype=perl
 
-
-" Ruby
+""" Ruby
 au FileType ruby setl ts=2 sw=2 expandtab
 autocmd BufNewFile *.rb 0r $HOME/.vim/template/template.rb
+let g:neocomplcache#sources#rsense#home_directory = '/opt/rsense-0.3'
 
 
-" C-Lang
+""" C-Lang
 au FileType c setl ts=4 sw=4 expandtab
 
 " nnoremap <sid>(command-line-enter) q:
@@ -24,16 +24,18 @@ au FileType c setl ts=4 sw=4 expandtab
 " nmap :  <sid>(command-line-enter)
 " xmap :  <sid>(command-line-enter)
 
-" LLVM
-augroup filetype
-  au! BufRead,BufNewFile *.ll     set filetype=llvm
-augroup END
-
-" golang
+""" golang
 auto BufWritePre *.go Fmt
 au BufNewFile,BufRead *.go set filetype=go
 autocmd FileType go setl ts=8 sw=8 expandtab
 autocmd BufNewFile *.go 0r $HOME/.vim/template/template.go
+
+" set rtp+=$GOROOT/misc/vim
+
+""" LLVM
+augroup filetype
+  au! BufRead,BufNewFile *.ll     set filetype=llvm
+augroup END
 
 autocmd BufNewFile,BufRead *.{md,mdwn,mkd,mkdn,mark*} set filetype=markdown
 autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS

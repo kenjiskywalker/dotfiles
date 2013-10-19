@@ -15,3 +15,8 @@ if [ -d ${HOME}/.plenv  ] ; then
 fi
 
 export RSENSE_HOME="${HOME}/.vim/bundle/rsense-0.3"
+
+### golang
+export GOROOT=$HOME/go
+export GOPATH=$HOME/gocode
+export PATH=$PATH:$GOPATH/bin
