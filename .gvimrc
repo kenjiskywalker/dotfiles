@@ -37,8 +37,15 @@ set clipboard+=unnamed
 " colorscheme solarized
 colorscheme Tomorrow-Night
 
+if has('multi_byte_ime') || has('xim') 
+  highlight Cursor guifg=White guibg=White
+  highlight CursorIM guifg=NONE guibg=DarkRed
+endif
+
 " 現在開いているファイルのある場所に常にcdする
 au   BufEnter *      exec ":lcd " . expand("%:p:h")
 
 " インサートモードを抜けたらIMEをオフ
 inoremap <silent> <ESC> <ESC>:set iminsert=0<CR>
+
+" autocmd InsertEnter,InsertLeave * set cursorline!
