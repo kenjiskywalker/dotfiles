@@ -35,5 +35,6 @@ NeoBundle 'szw/vim-tags'
 NeoBundle 'itchyny/lightline.vim'
 NeoBundle 'Align'
 NeoBundle 'c9s/perlomni.vim'
+NeoBundle 'sjl/gundo.vim'
 
 NeoBundleCheck

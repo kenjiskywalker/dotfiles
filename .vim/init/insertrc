@@ -30,3 +30,7 @@ set imsearch=0
 
 " コメントアウト勝手に入るの止める
 set formatoptions-=ro
+
+
+" Gundo
+nmap <Leader>g :GundoToggle<CR>
