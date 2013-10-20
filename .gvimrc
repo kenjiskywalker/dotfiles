@@ -49,3 +49,8 @@ au   BufEnter *      exec ":lcd " . expand("%:p:h")
 inoremap <silent> <ESC> <ESC>:set iminsert=0<CR>
 
 " autocmd InsertEnter,InsertLeave * set cursorline!
+
+hi Pmenu guibg=#4575A0
+hi PmenuSel guifg=#4575A0 guibg=#ffffff
+hi PmenuSbar guibg=#4575A0
+hi PmenuThumb guifg=#4575A0
