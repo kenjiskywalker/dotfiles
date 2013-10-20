@@ -35,6 +35,5 @@ NeoBundle 'szw/vim-tags'
 NeoBundle 'itchyny/lightline.vim'
 NeoBundle 'Align'
 NeoBundle 'c9s/perlomni.vim'
-NeoBundle 'nsf/gocode', {'rtp': 'vim'}
 
 NeoBundleCheck
