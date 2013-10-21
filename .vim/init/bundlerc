@@ -36,5 +36,6 @@ NeoBundle 'itchyny/lightline.vim'
 NeoBundle 'Align'
 NeoBundle 'c9s/perlomni.vim'
 NeoBundle 'sjl/gundo.vim'
+NeoBundle 'Rip-Rip/clang_complete.git'
 
 NeoBundleCheck

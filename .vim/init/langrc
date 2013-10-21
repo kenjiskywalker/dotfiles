@@ -16,6 +16,7 @@ let g:neocomplcache#sources#rsense#home_directory = '/opt/rsense-0.3'
 
 """ C-Lang
 au FileType c setl ts=4 sw=4 expandtab
+autocmd BufNewFile *.c 0r $HOME/.vim/template/clang.c
 
 " nnoremap <sid>(command-line-enter) q:
 " xnoremap <sid>(command-line-enter) q:
