@@ -26,8 +26,8 @@ autocmd BufNewFile *.c 0r $HOME/.vim/template/clang.c
 " xmap :  <sid>(command-line-enter)
 
 """ golang
-auto BufWritePre *.go Fmt
 au BufNewFile,BufRead *.go set filetype=go
+au BufWritePre *.go Fmt
 autocmd FileType go setl ts=8 sw=8 expandtab
 autocmd BufNewFile *.go 0r $HOME/.vim/template/template.go
 
