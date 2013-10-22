@@ -34,3 +34,12 @@ set formatoptions-=ro
 
 " Gundo
 nmap <Leader>g :GundoToggle<CR>
+
+" textobj
+omap ab <Plug>(textobj-multiblock-a)
+omap ib <Plug>(textobj-multiblock-i)
+vmap ab <Plug>(textobj-multiblock-a)
+vmap ib <Plug>(textobj-multiblock-i)
+
+" "let g:endwise_no_mappings = 1
+" autocmd CohamaAutoCmd FileType perl,c,g,lua,ruby,sh,zsh,vb,vbnet,aspvbs,vim imap <buffer> <CR> <CR><Plug>DiscretionaryEnd
