@@ -31,8 +31,6 @@ au BufNewFile,BufRead *.go set filetype=go
 autocmd FileType go setl ts=8 sw=8 expandtab
 autocmd BufNewFile *.go 0r $HOME/.vim/template/template.go
 
-" set rtp+=$GOROOT/misc/vim
-
 """ LLVM
 augroup filetype
   au! BufRead,BufNewFile *.ll     set filetype=llvm
