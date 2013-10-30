@@ -15,21 +15,12 @@ set ruler               " view ruler
 set incsearch
 set hlsearch
 set nowrap
-" set guioptions-=r       " disable right scrollbar
-" set guioptions-=l       " disable left scrollbar
-" set guioptions-=T       " disable toolber
-" 
-" set guioptions-=L
-" set guioptions-=m       " disable menu
-" set guioptions+=c
 
 set list
 set listchars=tab:>-,trail:-,extends:>,precedes:<
 set display=uhex
 
 set tw=0                " disable auto indent
-
-syntax on               " view source code highlight
 
 if &t_Co > 2 || has("gui_running")
   syntax on
