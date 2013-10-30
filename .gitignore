@@ -11,3 +11,5 @@
 .netrwhist
 .irssi*
 .DS_Store
+*.xml
+.ssh/
