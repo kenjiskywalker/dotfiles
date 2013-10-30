@@ -26,10 +26,17 @@ autocmd BufNewFile *.c 0r $HOME/.vim/template/clang.c
 " xmap :  <sid>(command-line-enter)
 
 """ golang
+
+" gocode
+set rtp+=$GOROOT/misc/vim
+" "golint
+exe "set rtp+=" . globpath($GOPATH, "src/github.com/golang/lint/misc/vim")
+
 au BufNewFile,BufRead *.go set filetype=go
 au BufWritePre *.go Fmt
 autocmd FileType go setl ts=8 sw=8 expandtab
 autocmd BufNewFile *.go 0r $HOME/.vim/template/template.go
+let g:syntastic_go_checkers = ['go', 'golint', 'govet'] 
 
 """ LLVM
 augroup filetype
