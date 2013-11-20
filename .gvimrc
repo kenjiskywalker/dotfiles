@@ -7,6 +7,8 @@ if &t_Co > 2 || has("gui_running")
   set hlsearch
 endif
 
+set history=1000
+
 set shortmess+=I
 set laststatus=2        " status line
 
