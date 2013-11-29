@@ -55,6 +55,7 @@ NeoBundle 'kana/vim-smartinput'
 NeoBundle 'alpaca-tc/alpaca_tags'
 NeoBundle 'tpope/vim-rails'
 NeoBundle 'scrooloose/nerdtree'
+NeoBundle 'LeafCage/yankround.vim'
 
 NeoBundleCheck
 
@@ -324,6 +325,11 @@ vmap ib <Plug>(textobj-multiblock-i)
 
 " "let g:endwise_no_mappings = 1
 " autocmd CohamaAutoCmd FileType perl,c,g,lua,ruby,sh,zsh,vb,vbnet,aspvbs,vim imap <buffer> <CR> <CR><Plug>DiscretionaryEnd
+
+nmap p <Plug>(yankround-p)
+nmap P <Plug>(yankround-P)
+nmap ,p <Plug>(yankround-prev)
+nmap ,n <Plug>(yankround-next)
 
 "==========================================
 " unite
