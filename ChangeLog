@@ -1,3 +1,8 @@
+2014-01-16  Kenjiskywalker <kenjiskywalker@skynightwalk.local>
+
+	* disable smartinput
+	* add http://blog.glidenote.com/blog/2012/04/11/mosh-with-tmux/ settings
+
 2013-11-29  Kenjiskywalker <kenjiskywalker@skynightwalk.local>
 
 	* add yankround.vim  (,n ,p)

@@ -4,7 +4,7 @@ PATH=$HOME:/usr/sbin:/usr/local/Cellar/imagemagick/6.6.4-5/bin:/opt/local/bin:/o
 PATH=$PATH:/usr/local/bin:/bin:/usr/bin:/sbin:/usr/local/sbin:/usr/local/share/python3:/usr/local/etc:/usr/local/share/npm/bin:$HOME/bin
 export PATH
 
-TERM=xterm-256color
+# TERM=screen
 
 HISTFILE=~/.zsh_history      # ヒストリファイルを指定
 HISTSIZE=100000              # ヒストリに保存するコマンド数
@@ -21,8 +21,6 @@ setopt hist_reduce_blanks    # 余分な空白は詰めて記録
 
 [ -f ~/.zsh/.zsh/git-completion.bash ] && source ~/.zsh/git-completion.bash
 
-# zsh-completions
-fpath=(~/.zsh/completion $fpath)
 
 autoload -U compinit
 compinit -u
@@ -196,4 +194,20 @@ export DYLD_LIBRARY_PATH=/usr/local/opt/libxml2/lib:$DYLD_LIBRARY_PATH
 BREW_PREFIX=`brew --prefix`
 if [ -e $BREW_PREFIX/etc/autojump.zsh ]; then
     source $BREW_PREFIX/etc/autojump.zsh
+fi
+
+# aws-cli
+source ~/.zsh/aws/aws_zsh_completer.sh
+source ~/.zsh/aws/classic_aws_cli.sh
+
+# http://blog.glidenote.com/blog/2012/04/11/mosh-with-tmux/
+if [ $TERM = screen-256color ]; then
+function mosh_tmux() {
+    tmux new-window -n $@ "exec mosh $@"
+}
+function ssh_tmux() {
+    tmux new-window -n $@ "exec ssh $@"
+}
+  alias ssh=ssh_tmux
+  alias mosh=mosh_tmux
 fi
