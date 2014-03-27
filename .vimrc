@@ -55,6 +55,8 @@ NeoBundle 'alpaca-tc/alpaca_tags'
 NeoBundle 'tpope/vim-rails'
 NeoBundle 'scrooloose/nerdtree'
 NeoBundle 'LeafCage/yankround.vim'
+NeoBundle 'szw/vim-tags'
+" NeoBundle 'hokorobi/vim-tagsgen' 
 
 NeoBundleCheck
 
@@ -239,6 +241,7 @@ set ruler               " view ruler
 set incsearch
 set hlsearch
 set nowrap
+set textwidth=0 "折り返しが勝手に入るので文字数をのばす
 
 set list
 set listchars=tab:>-,trail:-,extends:>,precedes:<
@@ -252,7 +255,6 @@ if &t_Co > 2 || has("gui_running")
 endif
 
 " set shortmess+=I
-" set lines=70 columns=210
 
 colorscheme molokai
 " set background=dark
@@ -272,7 +274,7 @@ set ttyfast
 set lazyredraw
 
 " unite-outline
-nnoremap <silent> <Leader>o :<C-u>Unite -vertical -no-quit outline<CR>
+nnoremap <silent> <Leader>m :<C-u>Unite -vertical -no-quit outline<CR>
 let g:unite_winwidth = 40
 "==========================================
 " insert
@@ -447,3 +449,13 @@ let g:memolist_vimfiler = 1
 map <Leader>ml  :MemoList<CR>
 map <Leader>mn  :MemoNew<CR>
 map <Leader>mg  :MemoGrep<CR>
+
+"==========================================
+" markdown
+"==========================================
+
+let g:vim_markdown_folding_disabled=1
+
+
+" g:godef_split=2
+" g:godef_same_file_in_same_window=1
