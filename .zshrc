@@ -126,7 +126,7 @@ elif [[ -n `echo "$st" | grep "^# Changes to be committed"` ]]; then
 RPROMPT='[`rprompt-git-current-branch`%~]'
 
 # 3秒以上かかった処理は詳細表示
-REPORTTIME=3
+# REPORTTIME=3
 
 [ -f ~/.zshrc.alias ] && source ~/.zshrc.alias
 
@@ -208,6 +208,7 @@ function mosh_tmux() {
 function ssh_tmux() {
     tmux new-window -n $@ "exec ssh $@"
 }
-  alias ssh=ssh_tmux
-  alias mosh=mosh_tmux
 fi
+
+# terminal color
+alias ssh=~/bin/ssh-host-color

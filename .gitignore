@@ -7,7 +7,7 @@
 .vim/autoload/
 .zshrc.alias
 .gitconfig
-*.conf
+# *.conf
 .netrwhist
 .irssi*
 .DS_Store

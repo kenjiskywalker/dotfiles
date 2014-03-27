@@ -24,8 +24,6 @@ set guioptions-=L
 set guioptions-=m
 set guioptions+=c
 
-set lines=70 columns=210
-
 "“§‰ß
 set transparency=15
 
