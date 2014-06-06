@@ -16,3 +16,4 @@
 .idea/
 .aws/
 .zsh/aws/
+awscli.conf
