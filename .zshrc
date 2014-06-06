@@ -163,7 +163,7 @@ fi
 #   function preexec() { local f; for f in $preexec_functions; do $f; done }
 # fi
 # 
-# function load-if-exists() { test -e "$1" && source "$1" }
+function load-if-exists() { test -e "$1" && source "$1" }
 
 # / で手前まで戻る
 WORDCHARS='*?_-.[]~=&;!#$%^(){}<>'
@@ -210,5 +210,10 @@ function ssh_tmux() {
 }
 fi
 
+alias ssht=ssh_tmux
+alias mosht=mosh_tmux
+
 # terminal color
 alias ssh=~/bin/ssh-host-color
+
+setopt IGNOREEOF
