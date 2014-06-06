@@ -55,8 +55,6 @@ NeoBundle 'alpaca-tc/alpaca_tags'
 NeoBundle 'tpope/vim-rails'
 NeoBundle 'scrooloose/nerdtree'
 NeoBundle 'LeafCage/yankround.vim'
-NeoBundle 'szw/vim-tags'
-" NeoBundle 'hokorobi/vim-tagsgen' 
 
 NeoBundleCheck
 
@@ -217,6 +215,11 @@ nnoremap <silent> <Leader>vv :VimShell<CR>
 " tagsジャンプの時に複数ある時は一覧表示
 nnoremap <C-]> g<C-]> 
 
+" let g:vim_tags_project_tags_command = "/usr/local/bin/ctags -R --symbol ./ 2>/dev/null"
+" let g:vim_tags_gems_tags_command = "/usr/local/bin/ctags -R `bundle show --paths` 2>/dev/null"
+let g:vim_tags_project_tags_command = "/usr/local/bin/ctags -R --symbol ./"
+let g:vim_tags_gems_tags_command = "/usr/local/bin/ctags -R `bundle show --paths`"
+
 let g:gitgutter_realtime = 0
 let g:gitgutter_eager = 1
 
@@ -246,6 +249,19 @@ set textwidth=0 "折り返しが勝手に入るので文字数をのばす
 set list
 set listchars=tab:>-,trail:-,extends:>,precedes:<
 set display=uhex
+
+" バッファを保存しなくても他のバッファを表示できるようにする
+set hidden
+
+" バッファが変更されているとき、コマンドをエラーにするのでなく、保存する
+" かどうか確認を求める
+set confirm
+
+" キーコードはすぐにタイムアウト。マッピングはタイムアウトしない
+set notimeout ttimeout ttimeoutlen=200
+
+" 履歴保存数
+set history=200
 
 set tw=0                " disable auto indent
 
@@ -314,6 +330,12 @@ set imsearch=0
 " コメントアウト勝手に入るの止める
 set formatoptions-=ro
 
+" unファイルが生成されないように
+set noundofile
+
+" fileのリストを補完しないように
+set wildmenu
+set wildmode=longest,list
 
 " Gundo
 nmap <Leader>g :GundoToggle<CR>
@@ -386,8 +408,10 @@ autocmd BufNewFile,BufRead *.t      set filetype=perl
 au FileType ruby setl ts=2 sw=2 expandtab
 autocmd BufNewFile *.rb 0r $HOME/.vim/template/template.rb
 let g:neocomplcache#sources#rsense#home_directory = '/opt/rsense-0.3'
-"let g:syntastic_ruby_checkers = ['rubocop']
-"let g:syntastic_quiet_warnings = 0
+let g:syntastic_mode_map = { 'mode': 'passive',
+            \ 'active_filetypes': ['ruby'] }
+let g:syntastic_ruby_checkers = ['rubocop']
+let g:syntastic_quiet_warnings = 0
 
 
 """ C-Lang
