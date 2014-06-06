@@ -17,3 +17,4 @@
 .aws/
 .zsh/aws/
 awscli.conf
+Vagrantfile
