@@ -73,8 +73,8 @@ alias dl="cd ~/Downloads"
 # export CC=/usr/bin/gcc-4.2
 
 ### zaw
-source ~/.zsh/zaw/zaw.zsh 
-bindkey '^R' zaw-history
+# source ~/.zsh/zaw/zaw.zsh 
+# bindkey '^R' zaw-history
 
 alias ec="/Applications/Emacs.app/Contents/MacOS/bin/emacsclient --alternate-editor /Applications/Emacs.app/Contents/MacOS/Emacs"
 
@@ -191,10 +191,10 @@ export DYLD_LIBRARY_PATH=/usr/local/opt/libxml2/lib:$DYLD_LIBRARY_PATH
 # unset DYLD_LIBRARY_PATH
 
 # autojump
-BREW_PREFIX=`brew --prefix`
-if [ -e $BREW_PREFIX/etc/autojump.zsh ]; then
-    source $BREW_PREFIX/etc/autojump.zsh
-fi
+# BREW_PREFIX=`brew --prefix`
+# if [ -e $BREW_PREFIX/etc/autojump.zsh ]; then
+#     source $BREW_PREFIX/etc/autojump.zsh
+# fi
 
 # aws-cli
 source ~/.zsh/aws/aws_zsh_completer.sh
@@ -217,3 +217,6 @@ alias mosht=mosh_tmux
 alias ssh=~/bin/ssh-host-color
 
 setopt IGNOREEOF
+
+source ~/.zsh/percol.zsh
+bindkey '^r' percol-select-history
