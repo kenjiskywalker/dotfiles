@@ -1,9 +1,5 @@
 export LANG=ja_JP.UTF-8
 
-PATH=$HOME:/usr/sbin:/usr/local/Cellar/imagemagick/6.6.4-5/bin:/opt/local/bin:/opt/depot_tools:/Developer/usr/bin:/bin/go_appengine
-PATH=$PATH:/usr/local/bin:/bin:/usr/bin:/sbin:/usr/local/sbin:/usr/local/share/python3:/usr/local/etc:/usr/local/share/npm/bin:$HOME/bin
-export PATH
-
 # TERM=screen
 
 HISTFILE=~/.zsh_history      # ヒストリファイルを指定
@@ -72,10 +68,6 @@ alias dl="cd ~/Downloads"
 
 # export CC=/usr/bin/gcc-4.2
 
-### zaw
-# source ~/.zsh/zaw/zaw.zsh 
-# bindkey '^R' zaw-history
-
 alias ec="/Applications/Emacs.app/Contents/MacOS/bin/emacsclient --alternate-editor /Applications/Emacs.app/Contents/MacOS/Emacs"
 
 export LSCOLORS=exfxcxdxbxegedabagacad
@@ -87,11 +79,7 @@ zstyle ':chpwd:*' recent-dirs-max 500
 zstyle ':chpwd:*' recent-dirs-default yes
 zstyle ':completion:*:default' menu select=1
 
-# zstyle ':filter-select' case-insensitive yes # 絞り込みをcase-insensitiveに
-# bindkey '^@' zaw-cdr # zaw-cdrをbindkey
-
 # prompt
-
 PROMPT="%(?.['-']%%.[%F{red}'x'%f]%%) "
 
 autoload -Uz VCS_INFO_get_data_git; VCS_INFO_get_data_git 2> /dev/null
@@ -142,28 +130,10 @@ if [ -f $HOME/.zshenv ]; then
   source $HOME/.zshenv
 fi
 
-
 if [ -x /usr/local/bin/brew ]; then
     BREW_PREFIX=`brew --prefix`
     fpath=($BREW_PREFIX/share/zsh/functions(N) $BREW_PREFIX/share/zsh/site-functions(N) $fpath)
 fi
-
-### z.sh
-# autoload -Uz is-at-least
-# 
-# # Treat hook functions as array
-# typeset -ga chpwd_functions
-# typeset -ga precmd_functions
-# typeset -ga preexec_functions
-# 
-# # Simulate hook functions for older versions
-# if ! is-at-least 4.2.7; then
-#   function chpwd() { local f; for f in $chpwd_functions; do $f; done }
-#   function precmd() { local f; for f in $precmd_functions; do $f; done }
-#   function preexec() { local f; for f in $preexec_functions; do $f; done }
-# fi
-# 
-function load-if-exists() { test -e "$1" && source "$1" }
 
 # / で手前まで戻る
 WORDCHARS='*?_-.[]~=&;!#$%^(){}<>'
@@ -171,11 +141,6 @@ WORDCHARS='*?_-.[]~=&;!#$%^(){}<>'
 ### Added by the Heroku Toolbelt
 # export PATH="/usr/local/heroku/bin:$PATH"
 
-
-### golang
-export GOROOT=$HOME/go
-export GOPATH=$HOME/gocode
-export PATH=$PATH:$GOROOT/bin
 
 ## 補完後，不要な "/" を削除する/しない
 ## auto-fu.zsh を利用する場合、autoremoveslash を unsetopt しておかないと
@@ -189,12 +154,6 @@ setopt transient_rprompt
 # nokogiriのヤツ
 export DYLD_LIBRARY_PATH=/usr/local/opt/libxml2/lib:$DYLD_LIBRARY_PATH
 # unset DYLD_LIBRARY_PATH
-
-# autojump
-# BREW_PREFIX=`brew --prefix`
-# if [ -e $BREW_PREFIX/etc/autojump.zsh ]; then
-#     source $BREW_PREFIX/etc/autojump.zsh
-# fi
 
 # aws-cli
 source ~/.zsh/aws/aws_zsh_completer.sh
@@ -218,5 +177,42 @@ alias ssh=~/bin/ssh-host-color
 
 setopt IGNOREEOF
 
-source ~/.zsh/percol.zsh
-bindkey '^r' percol-select-history
+# source ~/.zsh/percol.zsh
+# bindkey '^r' percol-select-history
+
+function peco-select-history() {
+    local tac
+    if which tac > /dev/null; then
+        tac="tac"
+    else
+        tac="tail -r"
+    fi
+    BUFFER=$(history -n 1 | \
+        eval $tac | \
+        peco --query "$LBUFFER")
+    CURSOR=$#BUFFER
+    zle clear-screen
+}
+zle -N peco-select-history
+bindkey '^r' peco-select-history
+
+function peco-ec2-instance() {
+    local get_list="~/program/script/aws-ec2-list.sh"
+    # get_list="ruby ~/program/ruby/aws-ec2-list.rb"
+    local selected_instance=$(eval $get_list | peco | awk '{print $2}')
+    BUFFER="ssh ${selected_instance}"
+    zle accept-line
+}
+zle -N peco-ec2-instance
+bindkey '^v' peco-ec2-instance
+
+function percol-cdr () {
+    local selected_dir=$(cdr -l | awk '{ print $2 }' | peco --query "$LBUFFER")
+    if [ -n "$selected_dir" ]; then
+        BUFFER="cd ${selected_dir}"
+        zle accept-line
+    fi
+    zle clear-screen
+}
+zle -N percol-cdr
+bindkey '^]' percol-cdr
