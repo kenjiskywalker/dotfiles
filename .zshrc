@@ -17,6 +17,8 @@ setopt hist_reduce_blanks    # 余分な空白は詰めて記録
 #setopt hist_ignore_space    # 先頭がスペースの場合、ヒストリに追加しない
 
 
+# Ctrl-x g ghq => cd
+
 [ -f ~/.zsh/.zsh/git-completion.bash ] && source ~/.zsh/git-completion.bash
 
 
@@ -120,10 +122,6 @@ RPROMPT='[`rprompt-git-current-branch`%~]'
 
 [ -f ~/.zshrc.alias ] && source ~/.zshrc.alias
 
-# AWS
-AWS_CONFIG_FILE=~/awscli.conf
-export AWS_CONFIG_FILE
-
 # 大文字小文字を区別しない
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
 
@@ -154,7 +152,6 @@ export DYLD_LIBRARY_PATH=/usr/local/opt/libxml2/lib:$DYLD_LIBRARY_PATH
 
 # aws-cli
 source ~/.zsh/aws/aws_zsh_completer.sh
-source ~/.zsh/aws/classic_aws_cli.sh
 
 # http://blog.glidenote.com/blog/2012/04/11/mosh-with-tmux/
 if [ $TERM = screen-256color ]; then
@@ -233,3 +230,9 @@ export RSENSE_HOME="${HOME}/.vim/bundle/rsense-0.3"
 export GOPATH=$HOME
 export PATH=$PATH:$GOPATH/bin/
 
+
+function _peco_ghq_list () {
+    cd $(ghq list -p | peco)
+}
+zle -N _peco_list_ghq
+bindkey '^xg' _peco_ghq_list
