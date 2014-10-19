@@ -15,10 +15,11 @@ NeoBundleFetch 'Shougo/neobundle.vim'
 
 NeoBundle 'petdance/vim-perl'
 NeoBundle 'Shougo/neocomplete'
-NeoBundle 'Shougo/neosnippet'
+NeoBundle 'Shougo/neosnippet-snippets'
 NeoBundle 'Shougo/unite.vim'
 NeoBundle 'Shougo/vimshell'
 NeoBundle 'h1mesuke/unite-outline'
+NeoBundle 'sorah/unite-ghq'
 " Quickrun {{{
 NeoBundle 'thinca/vim-quickrun'
 NeoBundle 'Shougo/vimproc'
@@ -30,16 +31,16 @@ NeoBundle 'tpope/vim-surround'
 NeoBundle 'vim-ruby/vim-ruby'
 NeoBundle 'plasticboy/vim-markdown'
 NeoBundle 'myhere/vim-nodejs-complete'
-NeoBundle 'itspriddle/vim-marked'
+" NeoBundle 'itspriddle/vim-marked'
 NeoBundle 'git://github.com/glidenote/octoeditor.vim.git'
 " NeoBundle 'mattn/emment-vim'
 NeoBundle 'Shougo/vimfiler'
-NeoBundle 'rking/ag.vim'
+" NeoBundle 'rking/ag.vim'
 NeoBundle 'tpope/vim-endwise'
 " NeoBundle 'glidenote/newdayone.vim'
 NeoBundle 'glidenote/memolist.vim'
 NeoBundle 'mattn/webapi-vim'
-NeoBundle 'mattn/gist-vim'
+" NeoBundle 'mattn/gist-vim'
 NeoBundle 'thinca/vim-ref'
 NeoBundle 'godlygeek/tabular'
 NeoBundle 'szw/vim-tags'
@@ -49,12 +50,20 @@ NeoBundle 'Align'
 NeoBundle 'c9s/perlomni.vim'
 NeoBundle 'sjl/gundo.vim'
 NeoBundle 'Rip-Rip/clang_complete.git'
-NeoBundle 'kana/vim-textobj-user'
-NeoBundle 'osyo-manga/vim-textobj-multiblock'
-NeoBundle 'alpaca-tc/alpaca_tags'
+" NeoBundle 'kana/vim-textobj-user'
+" NeoBundle 'osyo-manga/vim-textobj-multiblock'
 NeoBundle 'tpope/vim-rails'
 NeoBundle 'scrooloose/nerdtree'
 NeoBundle 'LeafCage/yankround.vim'
+NeoBundle 'kchmck/vim-coffee-script'
+NeoBundle 'claco/jasmine.vim'
+" NeoBundle 'nathanaelkane/vim-indent-guides'
+" NeoBundle 'majutsushi/tagbar'
+NeoBundle 'vim-jp/vim-go-extra'
+NeoBundle 'google/vim-ft-go'
+NeoBundle 'elzr/vim-json'
+NeoBundle 'tpope/vim-fugitive'
+NeoBundle 'airblade/vim-gitgutter'
 
 NeoBundleCheck
 
@@ -208,6 +217,8 @@ let g:octopress_path = "$HOME/octopress"
 " Vimfiler
 nnoremap <silent> <Leader>fe :<C-u>VimFilerBufferDir -quit<CR>
 nnoremap <silent> <Leader>fi :<C-u>VimFilerBufferDir -split -simple -winwidth=35 -no-quit<CR>
+nnoremap <silent> <Leader>fi :<C-u>VimFilerBufferDir -split -simple -winwidth=35 -no-quit<CR>
+" nnoremap <silent> <leader>o :TagbarToggle<CR>
 
 " VimShell
 nnoremap <silent> <Leader>vv :VimShell<CR>
@@ -215,8 +226,6 @@ nnoremap <silent> <Leader>vv :VimShell<CR>
 " tagsジャンプの時に複数ある時は一覧表示
 nnoremap <C-]> g<C-]> 
 
-" let g:vim_tags_project_tags_command = "/usr/local/bin/ctags -R --symbol ./ 2>/dev/null"
-" let g:vim_tags_gems_tags_command = "/usr/local/bin/ctags -R `bundle show --paths` 2>/dev/null"
 let g:vim_tags_project_tags_command = "/usr/local/bin/ctags -R --symbol ./"
 let g:vim_tags_gems_tags_command = "/usr/local/bin/ctags -R `bundle show --paths`"
 
@@ -394,7 +403,7 @@ augroup END
 " lang
 "==========================================
 
-" Perl 
+""" Perl 
 au FileType perl setl ts=4 sw=4 expandtab
 
 map ,pt <Esc>:%! perltidy -se<CR>
@@ -428,7 +437,7 @@ autocmd BufNewFile *.c 0r $HOME/.vim/template/clang.c
 """ golang
 
 " gocode
-set rtp+=$GOROOT/misc/vim
+" set rtp+=$GOROOT/misc/vim
 " "golint
 exe "set rtp+=" . globpath($GOPATH, "src/github.com/golang/lint/misc/vim")
 
@@ -454,6 +463,13 @@ autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
 "" golangでプレビューに出ないように
 set completeopt=menuone
 
+
+""" coffeescript
+
+" vimにcoffeeファイルタイプを認識させる
+au BufRead,BufNewFile,BufReadPre *.coffee   set filetype=coffee
+" インデントを設定
+autocmd FileType coffee     setlocal sw=2 sts=2 ts=2 et
 
 
 "==========================================
@@ -483,3 +499,19 @@ let g:vim_markdown_folding_disabled=1
 
 " g:godef_split=2
 " g:godef_same_file_in_same_window=1
+"
+let g:vim_json_syntax_conceal = 0
+let g:indentLine_noConcealCursor=""
+au! BufRead,BufNewFile *.json set filetype=json 
+
+"==========================================
+" tag
+"==========================================
+set tags+=.tags
+set tags+=.Gemfile.lock.tags
+let g:auto_ctags = 1
+
+" gitgutter
+" http://kazuph.hateblo.jp/entry/2013/04/17/145339
+nnoremap <silent> ,gg :<C-u>GitGutterToggle<CR>
+nnoremap <silent> ,gh :<C-u>GitGutterLineHighlightsToggle<CR>

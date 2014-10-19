@@ -1,8 +1,8 @@
 export LANG=ja_JP.UTF-8
 export PATH
 
-export PATH=$HOME:/usr/sbin:/usr/local/Cellar/imagemagick/6.6.4-5/bin:/opt/local/bin:/opt/depot_tools:/Developer/usr/bin:/bin/go_appengine
-export PATH=$PATH:/usr/local/bin:/bin:/usr/bin:/sbin:/usr/local/sbin:/usr/local/share/python3:/usr/local/etc:/usr/local/share/npm/bin:$HOME/bin# TERM=screen
+export PATH=/usr/sbin:/usr/local/Cellar/imagemagick/6.6.4-5/bin:/opt/local/bin:/opt/depot_tools:/Developer/usr/bin:/bin/go_appengine
+export PATH=$PATH:/usr/local/bin:/bin:/usr/bin:/sbin:/usr/local/sbin:/usr/local/share/python3:/usr/local/etc:/usr/local/share/npm/bin
 
 HISTFILE=~/.zsh_history      # ヒストリファイルを指定
 HISTSIZE=100000              # ヒストリに保存するコマンド数
@@ -21,6 +21,8 @@ setopt hist_reduce_blanks    # 余分な空白は詰めて記録
 
 [ -f ~/.zsh/.zsh/git-completion.bash ] && source ~/.zsh/git-completion.bash
 
+# zsh-completions を使う
+fpath=($HOME/zsh-completions/src $fpath)
 
 autoload -U compinit
 compinit -u
@@ -133,10 +135,6 @@ fi
 # / で手前まで戻る
 WORDCHARS='*?_-.[]~=&;!#$%^(){}<>'
 
-### Added by the Heroku Toolbelt
-# export PATH="/usr/local/heroku/bin:$PATH"
-
-
 ## 補完後，不要な "/" を削除する/しない
 ## auto-fu.zsh を利用する場合、autoremoveslash を unsetopt しておかないと
 ## パスを補完した際にスラッシュが二重になる。
@@ -215,24 +213,32 @@ bindkey '^]' percol-cdr
 # rbenv
 #=============================
 if [ -d ${HOME}/.rbenv  ] ; then
-    eval "$(rbenv init -)"
+    PATH={$PATH}:${HOME}/.rbenv/shims
 fi
 
 # plenv
-if [ -d ${HOME}/.plenv  ] ; then
-    PATH=${HOME}/.plenv/bin/:${HOME}/.plenv/shims:${PATH}
-    eval "$(plenv init -)"
-fi
+# if [ -d ${HOME}/.plenv  ] ; then
+#     PATH=${HOME}/.plenv/bin/:${HOME}/.plenv/shims:${PATH}
+#     eval "$(plenv init -)"
+# fi
 
 export RSENSE_HOME="${HOME}/.vim/bundle/rsense-0.3"
 
 ### golang
+export GOROOT="/usr/local/opt/go/libexec"
 export GOPATH=$HOME
-export PATH=$PATH:$GOPATH/bin/
-
+export PATH=$PATH:$GOPATH/bin
 
 function _peco_ghq_list () {
     cd $(ghq list -p | peco)
 }
 zle -N _peco_list_ghq
 bindkey '^xg' _peco_ghq_list
+
+alias g='cd $(ghq list -p | peco)'
+
+
+
+export SSL_CERT_FILE=/usr/local/etc/openssl/cert.pem
+
+

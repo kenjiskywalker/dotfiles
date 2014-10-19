@@ -2,6 +2,9 @@
 "-----------------------------------------------------------
 " Switch syntax highlighting on, when the terminal has colors
 " Also switch on highlighting the last used search pattern.
+
+" set guifont=Ricty\ 15
+
 if &t_Co > 2 || has("gui_running")
   syntax on
   set hlsearch
@@ -25,7 +28,7 @@ set guioptions-=m
 set guioptions+=c
 
 "“§‰ß
-set transparency=15
+set transparency=35
 
 "-----------------------------------------------------------
 

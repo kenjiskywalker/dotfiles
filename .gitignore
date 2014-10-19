@@ -2,20 +2,18 @@
 .emacs.d/history
 .emacs.d/tramp
 .emacs.d/.org-id-locations
-.vim/bundle/.neobundle/*
+.vim/bundle/*
 .vim/ftplugin/
 .vim/autoload/
 .zshrc.alias
 .gitconfig
-# *.conf
 .netrwhist
 .irssi*
 .DS_Store
-*.xml
 .ssh/
-.idea/
 .aws/
 .zsh/aws/
 awscli.conf
-Vagrantfile
 /src/
+Vagrantfile
+private.xml
